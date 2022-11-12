@@ -36,6 +36,7 @@ All the files/folders not listed here probably won't be modified very often.
 ## Learning React
 React has a bit of a learning curve.
 Biggest things to remember are:
+- React is all about components. For example, you might have a file called `ProfilePicture.jsx` which is a component that contains all the logic for showing a person's icon, handling the account settings popup when clicked, etc.
 - This app uses *functional components.* Every React component is a function. These functions have input (props) and output (HTML). The output is **entirely** dependent on the props. If the props change, the HTML changes. Input->Output. Just like functions in math: `f(x) -> y`. The exception to this rule is state. More on that later.
 - Functional components are a programming paradigm called "functional programming" which is a lot different (and arguably better) than "object-oriented programming."
 - When looking up tutorials, make sure the tutorial uses *functional* components, not *class* components.

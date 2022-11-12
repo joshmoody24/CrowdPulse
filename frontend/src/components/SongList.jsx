@@ -1,6 +1,6 @@
 import react, {useEffect, useState} from "react";
 
-export default function SongPopup(){
+export default function SongList(){
 
     // store the songs as state
     const [songs, setSongs] = useState([]);
@@ -16,7 +16,10 @@ export default function SongPopup(){
         loadSongs();
     }, [])
     
-    // example of how to create song
+    // example of how to create a song
+    // it's not being used at the moment,
+    // just for future reference
+    /*
     async function createSong(){
         const response = await fetch('/api/songs', {
             method: "POST",
@@ -28,10 +31,11 @@ export default function SongPopup(){
             }
         })
     }
+    */
 
     return (
         <>
-        Song List
+        <h2>Song List</h2>
             <ul>
                 {songs.map(s => (
                     <li key={s.id}>{s.title}</li>

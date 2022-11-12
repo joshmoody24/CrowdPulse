@@ -30,7 +30,7 @@ All the files/folders not listed here probably won't be modified very often.
         - `App.jsx` - One level down from the root React component. It contains stuff on every page of the app, like the navbar and footer
 - backend
     - models - This folder contains one .js file for every table in the database. The package Sequelize manages the database for us. No SQL required!
-    - .env - This file doesn't exist by default. You'll have to create it and populate it with the database info (so our password doesn't leak over GitHub)
+    - `.env` - This file doesn't exist by default. You'll have to create it and populate it with the database info (so our password doesn't leak over GitHub)
     - `index.js` - The main backend server file. This is where all of our API endpoints and business logic will go
 
 ## Learning React

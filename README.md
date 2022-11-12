@@ -8,7 +8,7 @@ A web application that allows DJs to interact with their audiences in real time.
 
 ## Setup Instructions
 1. Clone this git repository
-2. In the `backend` directory, create a file called `.env` and copy the contents of `.env.example` into it. Then fill in the placeholders with real values.
+2. In the `backend` directory, create a file called `.env` and copy the contents of `.env.example` into it. Then fill in the placeholders with real values
 3. Open 2 terminals
 4. In the first terminal, navigate to the backend folder `cd backend`
 5. Install backend dependencies `npm install`
@@ -36,9 +36,9 @@ All the files/folders not listed here probably won't be modified very often.
 ## Learning React
 React has a bit of a learning curve.
 Biggest things to remember are:
-- This app uses *functional components.* Every React component is a function. These functions have input (props) and output (HTML) that changes based on the props.
+- This app uses *functional components.* Every React component is a function. These functions have input (props) and output (HTML). The output is **entirely** dependent on the props. If the props change, the HTML changes. Input->Output. Just like functions in math: `f(x) -> y`. The exception to this rule is state. More on that later.
 - Functional components are a programming paradigm called "functional programming" which is a lot different (and arguably better) than "object-oriented programming."
 - When looking up tutorials, make sure the tutorial uses *functional* components, not *class* components.
-- I tried to add enough features into the app so that hopefully you can reverse-engineer how React works by looking at my code.
-- To start revere-engineering, I'd first study `/App.jsx`, then `/pages/Home.jsx`, then `/pages/Home/SongRequest.jsx`, and finally `/components/SongList.jsx`
+- I tried to add enough features into the app so that hopefully you can reverse engineer how React works by looking at my code.
+- To start reverse engineering, I'd first study `/App.jsx`, then `/pages/Home.jsx`, then `/pages/Home/SongRequest.jsx`, and finally `/components/SongList.jsx`
 - If the component needs to remember something not included in its props (like, say, a count of how many times a button is clicked), you do that by giving it "state" (via the useState hook). State is a way to preserve variables in between component renders.

@@ -1,5 +1,6 @@
 import SongList from "../components/SongList"
 import {useState} from "react"
+import debounce from "lodash/debounce"
 
 export default function SongRequest(){
 
@@ -14,10 +15,16 @@ export default function SongRequest(){
         })
     }
 
+    async function searchSongs(text){
+        console.log("Searching for songs that include: " + text + " (not implemented)");
+    }
+
+    const handleChange = debounce(text => searchSongs(text), 1000)
+
     return (
         <>
         <h1>Song Request Page</h1>
-        <input type="text" onChange={console.log("TODO: debounce to search endpoint")} />
+        <input type="text" onChange={(event) => handleChange(event.target.value)} />
         {/* TODO: search list goes here */}
         <button onClick={() => requestSong(songId)}>Request Song</button>
         

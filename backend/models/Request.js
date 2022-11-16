@@ -3,15 +3,29 @@ import sequelize from "../sequelize.js";
 
 const Request = sequelize.define('Request', {
   // Model attributes are defined here
-  id: {
+  request_id: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
     primaryKey: true,
+  },
+  spotify_song_id: {
+    type: DataTypes.INTEGER.UNSIGNED,
+    allowNull: false
   },
   title: {
     type: DataTypes.STRING,
     allowNull: false
   },
+  artist: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  vote_count: {
+    type: DataTypes.INTEGER.UNSIGNED
+  },
+  request_played: {
+    type: DataTypes.BOOLEAN
+  }
 }, {
   // Other model options go here
 });

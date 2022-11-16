@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from "../sequelize.js";
 
-const Song = sequelize.define('Song', {
+const Request = sequelize.define('Request', {
   // Model attributes are defined here
   id: {
     type: DataTypes.INTEGER.UNSIGNED,
@@ -17,6 +17,6 @@ const Song = sequelize.define('Song', {
 });
 
 // this automatically creates a database table if necessary
-await Song.sync();
+await Request.sync();
 
-export default Song;
+export default Request;

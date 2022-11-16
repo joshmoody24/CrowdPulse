@@ -7,7 +7,7 @@ import env from "./env.js"
 
 // database imports
 import sequelize from "./sequelize.js";
-import Song from "./models/song.js";
+import Request from "./models/Request.js";
 
 const app = express();
 
@@ -23,20 +23,25 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-    res.json({ message: "Test endpoint" });
-});
-
-app.get('/songs', async (req, res) => {
-    const songs = await Song.findAll()
-    res.json(songs)
+// get list of requests
+app.get('/requests', async (req, res) => {
+    const requests = await Request.findAll()
+    res.json(requests)
 })
 
-app.post('/songs', async (req, res) => {
+// create request
+app.post('/requests', async (req, res) => {
     const songs = await Song.create({
         title: req.body.title
     })
     res.json(songs)
+})
+
+// search
+// this endpoint gets hit constantly while the user is typing in a song request
+// to generate a list of possible songs they are looking for
+app.get('/search', async (req, res) => {
+    res.send("NOT IMPLEMENTED")
 })
 
 // set port, listen for requests

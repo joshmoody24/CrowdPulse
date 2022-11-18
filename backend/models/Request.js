@@ -9,7 +9,7 @@ const Request = sequelize.define('Request', {
     primaryKey: true,
   },
   spotify_song_id: {
-    type: DataTypes.INTEGER.UNSIGNED,
+    type: DataTypes.STRING,
     allowNull: false
   },
   title: {

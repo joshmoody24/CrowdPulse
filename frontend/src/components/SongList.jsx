@@ -9,7 +9,7 @@ export default function SongList(){
     // the empty array at the end means "only run this function when the component loads, never again"
     useEffect(() => {
         async function loadSongs(){
-            const response = await fetch('/api/songs');
+            const response = await fetch('/api/requests');
             const songs = await response.json()
             setSongs(songs);
         }

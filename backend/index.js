@@ -40,8 +40,10 @@ app.post('/requests', async (req, res) => {
 // search
 // this endpoint gets hit constantly while the user is typing in a song request
 // to generate a list of possible songs they are looking for
-app.get('/search', async (req, res) => {
-    res.send("NOT IMPLEMENTED")
+app.get('/search/:query', async (req, res) => {
+    const query = req.params.query;
+    const fakeData = ['example song', 'test song', 'third song']
+    res.json(fakeData.filter(s => s.includes(query)))
 })
 
 // set port, listen for requests

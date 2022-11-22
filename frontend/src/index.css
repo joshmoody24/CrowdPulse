@@ -22,12 +22,3 @@ body nav a {
   justify-content: center;
   align-items: center;
 }
-
-button {
-  border: 2px solid black;
-  background-color: #557;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: white;
-  margin: 0.25rem;
-}

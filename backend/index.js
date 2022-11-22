@@ -9,6 +9,8 @@ import env from "./env.js"
 import sequelize from "./sequelize.js";
 import Request from "./models/Request.js";
 
+import client from "./spotify.js";
+
 const app = express();
 
 var corsOptions = {
@@ -31,10 +33,15 @@ app.get('/requests', async (req, res) => {
 
 // create request
 app.post('/requests', async (req, res) => {
-    const songs = await Song.create({
-        title: req.body.title
+    console.log(req.body.song)
+    const songRequest = await Request.create({
+        title: req.body.song.name,
+        spotify_song_id: req.body.song.id,
+        artist: req.body.song.artists[0].name, // todo: one to many field?
+        vote_count: 0,
+        request_played: false,
     })
-    res.json(songs)
+    res.json(songRequest)
 })
 
 // search
@@ -42,8 +49,9 @@ app.post('/requests', async (req, res) => {
 // to generate a list of possible songs they are looking for
 app.get('/search/:query', async (req, res) => {
     const query = req.params.query;
-    const fakeData = ['example song', 'test song', 'third song']
-    res.json(fakeData.filter(s => s.includes(query)))
+    const searchResults = await client.search(req.params.query, {types: ['track']})
+    console.log(searchResults);
+    res.json(searchResults.tracks)
 })
 
 // set port, listen for requests

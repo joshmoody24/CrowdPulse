@@ -6,15 +6,21 @@ export default function SongRequest(){
 
     const [songId, setSongId] = useState(-1);
     const [searchResults, setSearchResults] = useState([]);
+    const [selectedSong, setSelectedSong] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [requested, setRequested] = useState(false);
 
     async function requestSong(id){
         if(!songId) return;
-        const response = await fetch('/requests', {
+        const response = await fetch('/api/requests', {
             method: "POST",
-            body: JSON.stringify({songId}),
+            body: JSON.stringify({
+                song: selectedSong
+            }),
             headers: {"Content-Type": "application/json; charset=UTF-8"}
         })
+        console.log(response);
+        setRequested(true);
     }
 
     async function searchSongs(text){
@@ -29,22 +35,40 @@ export default function SongRequest(){
     }
 
     const handleChange = debounce(text => searchSongs(text), 500)
+    
+    function clear(){
+        setSelectedSong(null);
+        setSearchResults([]);
+    }
+
+    if(requested){
+        return (
+            <h1>Your Song {selectedSong.name} has been requested. Thank you!</h1> 
+        )
+    }
 
     return (
-        <>
+        <div style={{position:"relative"}}>
         <h1>Song Request Page</h1>
-        <input type="text" onChange={(event) => handleChange(event.target.value)} />
-        {/* TODO: search list goes here */}
-        <button onClick={() => requestSong(songId)}>Request Song</button>
+        <div style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'center'}}>
 
-        Search Results
-        {searchResults.length > 0 && (
-            <>
-            {searchResults.map(r => (
-                <button key={r}>{r}</button>
-            ))}
-            </>
+            {selectedSong && (
+                <div>
+                    <button onClick={clear}>X</button>&nbsp;
+                    Selected Song: {selectedSong.name}&nbsp;
+                </div>
+            )}
+
+            {!selectedSong && (
+                <input type="text" onChange={(event) => handleChange(event.target.value)} />
+            )}
+
+            <button onClick={() => requestSong(songId)}>Request Song</button>
+        </div>
+
+        {searchResults.length > 0 && !selectedSong && (
+            <SongList songs={searchResults} onSongSelect={(song) => setSelectedSong(song)} />
         )}
-        </>
+        </div>
     )
 }

@@ -10,7 +10,7 @@ import sequelize from "./sequelize.js";
 import models from "./models/models.js";
 
 
-import client from "./spotify.js";
+import spotify from "./spotify.js";
 
 const app = express();
 
@@ -34,12 +34,24 @@ app.get('/requests', async (req, res) => {
 
 // create request
 app.post('/requests', async (req, res) => {
-    console.log(req.body.song)
+    console.log(req.body.song.id)
+
+    // if song has already been requested,
+    // increment vote count instead of creating new record
+    const existingRequest = await Request.findOne({where: {spotify_song_id: req.body.song.id}})
+    if(existingRequest){
+        existingRequest.vote_count++
+        await existingRequest.save()
+        res.json(existingRequest)
+        return
+    }
+
+    // add new record if not already requested
     const songRequest = await Request.create({
         title: req.body.song.name,
         spotify_song_id: req.body.song.id,
-        artist: req.body.song.artists[0].name, // todo: one to many field?
-        vote_count: 0,
+        artist: req.body.song.artists.map(a => a.name).join(', '),
+        vote_count: 1,
         request_played: false,
     })
     res.json(songRequest)
@@ -50,7 +62,7 @@ app.post('/requests', async (req, res) => {
 // to generate a list of possible songs they are looking for
 app.get('/search/:query', async (req, res) => {
     const query = req.params.query;
-    const searchResults = await client.search(req.params.query, {types: ['track']})
+    const searchResults = await spotify.search(req.params.query, {types: ['track']})
     console.log(searchResults);
     res.json(searchResults.tracks)
 })

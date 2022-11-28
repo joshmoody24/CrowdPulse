@@ -7,7 +7,8 @@ import env from "./env.js"
 
 // database imports
 import sequelize from "./sequelize.js";
-import Request from "./models/Request.js";
+import models from "./models/models.js";
+
 
 import client from "./spotify.js";
 

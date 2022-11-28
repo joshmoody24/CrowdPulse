@@ -1,9 +1,9 @@
 import { DataTypes } from 'sequelize';
 import sequelize from "../sequelize.js";
 
-const Request = sequelize.define('Request', {
+const Recommendation = sequelize.define('Recommendation', {
   // Model attributes are defined here
-  request_id: {
+  recommendation_id: {
     type: DataTypes.INTEGER.UNSIGNED,
     autoIncrement: true,
     primaryKey: true,
@@ -20,13 +20,7 @@ const Request = sequelize.define('Request', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  vote_count: {
-    type: DataTypes.INTEGER.UNSIGNED
-  },
-  request_played: {
-    type: DataTypes.BOOLEAN
-  }
 }, {
   // Other model options go here
 });
-export default Request;
+export default Recommendation;

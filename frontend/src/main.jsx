@@ -19,6 +19,7 @@ root.render(
           {/* pages routes go here */}
           <Route path="/" element={<Home/>} />
           <Route path="/request-song" element={<SongRequest/>} />
+          <Route path="/recommendations" element={<Recommendations/>} />
           
         </Route>
       </Routes>

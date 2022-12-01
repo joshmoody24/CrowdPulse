@@ -53,7 +53,7 @@ app.post('/requests', async (req, res) => {
 
     // if song has already been requested,
     // increment vote count instead of creating new record
-    const existingRequest = await models.Request.findOne({where: {spotify_song_id: req.body.song.id}})
+    const existingRequest = await Request.findOne({where: {spotify_song_id: req.body.song.id}})
     if(existingRequest){
         existingRequest.vote_count++
         await existingRequest.save()
@@ -62,7 +62,7 @@ app.post('/requests', async (req, res) => {
     }
 
     // add new record if not already requested
-    const songRequest = await models.Request.create({
+    const songRequest = await Request.create({
         title: req.body.song.name,
         spotify_song_id: req.body.song.id,
         artist: req.body.song.artists.map(a => a.name).join(', '),
@@ -89,7 +89,7 @@ app.post('/requests', async (req, res) => {
     const recommendations = recomendationRequest.tracks.slice(1)
 
     recommendations.forEach(async (track) => {
-        await models.Recommendation.create({
+        await Recommendation.create({
             title: track.name,
             spotify_song_id: track.id,
             artist: track.artists.map(a => a.name).join(', '),

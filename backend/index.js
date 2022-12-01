@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import http from "http";
+import { Server } from "socket.io"
+
 
 // load environment variables
 // don't delete even though it looks unused
@@ -7,12 +10,19 @@ import env from "./env.js"
 
 // database imports
 import sequelize from "./sequelize.js";
-import models from "./models/models.js";
+import { Request, Recommendation } from "./models/models.js";
 
 
 import spotify from "./spotify.js";
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+});
 
 var corsOptions = {
   origin: "http://localhost:8080"
@@ -25,6 +35,12 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+// function that updates dj page when something changes
+async function updateDJPage() {
+    const requests = await Request.findAll({include : [Recommendation]});
+    io.emit("update", requests);
+}
 
 // get list of requests
 app.get('/requests', async (req, res) => {
@@ -93,8 +109,17 @@ app.get('/search/:query', async (req, res) => {
     res.json(searchResults.tracks)
 })
 
+// socket interface here updates the recommendations page with necessary recommendations
+io.on('connection', (socket) => {
+    console.log('Connection established with dj page');
+    io.on('disconnect', (socket) => {
+        console.log('Disconnected from dj page');
+    });
+    updateDJPage();
+});
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-    app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });

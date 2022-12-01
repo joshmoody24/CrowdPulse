@@ -7,7 +7,5 @@ Recommendation.belongsTo(Request, {onDelete: 'CASCADE'});
 await Request.sync();
 await Recommendation.sync();
 
-export default {
-    Request, 
-    Recommendation
-};
+export { Request };
+export { Recommendation };

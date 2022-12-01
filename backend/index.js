@@ -77,6 +77,7 @@ app.post('/requests', async (req, res) => {
             title: track.name,
             spotify_song_id: track.id,
             artist: track.artists.map(a => a.name).join(', '),
+            RequestRequestId: songRequest.request_id,
         })
     })
     

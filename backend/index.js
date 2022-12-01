@@ -88,15 +88,15 @@ app.post('/requests', async (req, res) => {
     // the first recommendation seems to always be a clone of the original song, skip it
     const recommendations = recomendationRequest.tracks.slice(1)
 
-    recommendations.forEach(async (track) => {
+    for (let track of recommendations) {
         await Recommendation.create({
             title: track.name,
             spotify_song_id: track.id,
             artist: track.artists.map(a => a.name).join(', '),
             RequestRequestId: songRequest.request_id,
-        })
-    })
-    
+        });
+    }
+
     await updateDJPage();
 
     res.json(songRequest)
@@ -114,11 +114,14 @@ app.get('/search/:query', async (req, res) => {
 
 // socket interface here updates the recommendations page with necessary recommendations
 io.on('connection', (socket) => {
-    console.log('Connection established with dj page');
-    io.on('disconnect', (socket) => {
+    
+    socket.on('DJ Page', (socket) => {
+        updateDJPage();
+    });
+
+    socket.on('disconnect', (socket) => {
         console.log('Disconnected from dj page');
     });
-    updateDJPage();
 });
 
 // set port, listen for requests

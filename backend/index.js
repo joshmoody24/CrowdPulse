@@ -97,6 +97,8 @@ app.post('/requests', async (req, res) => {
         })
     })
     
+    await updateDJPage();
+
     res.json(songRequest)
 })
 

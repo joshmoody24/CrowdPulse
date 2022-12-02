@@ -69,3 +69,8 @@ body nav h1 {
 .padded {
   padding: 1rem;
 }
+
+.input::placeholder {
+  color: white !important;
+  opacity:1 ;
+}

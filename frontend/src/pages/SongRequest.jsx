@@ -49,7 +49,7 @@ export default function SongRequest(){
 
     return (
         <div style={{position:"relative"}}>
-        <h1>Song Request Page</h1>
+        <h1></h1>
         <div style={{display:'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'center'}}>
 
             {selectedSong && (
@@ -64,7 +64,7 @@ export default function SongRequest(){
             )}
 
             <button onClick={() => requestSong(songId)}><b>Request Song</b></button>
-            button:style = {{backgroundColor: "#ff683c", height: "2em", width: "8em", fontSize: "20px", borderRadius: "0.5em"}}
+            
         </div>
 
         {searchResults.length > 0 && !selectedSong && (

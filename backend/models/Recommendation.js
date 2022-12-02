@@ -20,6 +20,22 @@ const Recommendation = sequelize.define('Recommendation', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  album_art: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  bpm: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  length: {
+    type: DataTypes.DOUBLE,
+    allowNull: false
+  },
+  key: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
 }, {
   // Other model options go here
 });

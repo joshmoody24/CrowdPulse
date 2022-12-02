@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import SongRequest from "./pages/SongRequest"
 import "./index.css"
 import Recommendations from "./pages/Recommendations"
+import Vote from './pages/vote';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root')
@@ -20,6 +21,7 @@ root.render(
           {/* pages routes go here */}
           <Route path="/" element={<Home/>} />
           <Route path="/request-song" element={<SongRequest/>} />
+          <Route path="/vote" element={<Vote/>} />
           <Route path="/recommendations" element={<Recommendations/>} />
           
         </Route>

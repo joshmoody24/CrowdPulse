@@ -23,6 +23,7 @@ function App() {
           <div>
             <Link to="/">Home</Link>
             <Link style={{marginLeft:"1rem"}} to="/request-song">Request</Link>
+            <Link style={{marginLeft:"1rem"}} to="/vote">Vote</Link>
           </div>
           <div>
             <Link to="/"><h1>CROWDPULSE</h1></Link>

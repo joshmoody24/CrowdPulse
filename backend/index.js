@@ -45,6 +45,7 @@ async function updateDJPage() {
 // get list of requests
 app.get('/requests', async (req, res) => {
     const requests = await Request.findAll()
+    console.log(requests)
     res.json(requests)
 })
 

@@ -10,18 +10,18 @@ export default function Home(){
         <>
         <div className="container">
             <div className="row">
-                <div className="col">
-                    <img src={Crowd} alt="crowd_moshing" />
+                <div className="col text-center">
+                    <img src={Crowd} className="img-fluid" alt="crowd_moshing" />
                 </div>
             </div>
-            <div className="row">
+            <div className="row mt-5">
                 <div className="col text-center">
                     <img src={Vote} alt="vote_icon" />
-                    <p>Cast Your Vote for the Next Song</p>
+                    <p className="mt-2"><b>Cast Your Vote for the Next Song</b></p>
                 </div>
                 <div className="col text-center">
-                    <img src={Submit} alt="submit_icon" />
-                    <p>Submit Request for the Next Song</p>
+                    <Link to="/request-song"><img src={Submit} alt="submit_icon" /></Link>
+                    <p className="mt-2"><b>Submit Request for the Next Song</b></p>
                 </div>
             </div>
         </div>

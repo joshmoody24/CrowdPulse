@@ -1,4 +1,94 @@
-html, body {
+html body {
+  background-color: #000000;
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+}
+
+body nav {
+  align-items: center;
+  background-color: #000000;
+  color: white;
+  display: flex;
+  justify-content: left;
+  width: 100%;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-contents {
+  display: contents;
+}
+
+.empty-width-left {
+  width: 29%;
+}
+
+  .empty-width-left::after {
+    content: '\200b';
+  }
+
+.logo-container {
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  width: 8%;
+}
+
+  .logo-container img {
+    height: 150px;
+  }
+
+.crowdpulse-navlinks {
+  height: 150px;
+  width: 26%;
+}
+
+  .crowdpulse-container {
+    margin-top: -12px;
+    text-align: center;
+  }
+
+    .crowdpulse-container a {
+      text-decoration: none;
+    }
+
+      .crowdpulse-container a h1 {
+        color: #ff683c;
+        font-size: 50px;
+        font-weight: bold;
+        letter-spacing: 0.2em;
+      }
+
+  .navlinks-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: -6%;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+  }
+
+    .navlinks-container a {
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
+    }
+
+.empty-width-right {
+  width: 37%;
+}
+
+  .empty-width-right::after {
+    content: '\200b';
+  }
+
+
+/* html, body {
   background-color: #000000;
   padding: 0;
   margin: 0;
@@ -9,11 +99,14 @@ html, body {
 body nav {
   background-color: #000000;
   color: white;
-  padding: 0 2rem 0 2rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  /* padding: 0 2rem 0 2rem; */ /*
 }
 
 body nav a {
-  font-weight: bold;
   font-size: 30px;
   color: white;
   text-decoration: none;
@@ -26,9 +119,114 @@ body nav h1 {
   letter-spacing: 0.2em;
 }
 
+.crowdpulse {
+  text-align: center;
+  width: 40%;
+}
+
+.for-phone {
+  display: inherit;
+}
+
+.logo {
+  width: 6%;
+  height: 104px;
+  padding-left: 2%;
+  padding-right: 2%;
+  text-align: center;
+}
+
+.logo img {
+  height: 104px;
+}
+
+.nav-links {
+  text-align: center;
+  width: 20%;
+}
+
 .page-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (min-width: 990px) and (max-width: 1330px) {
+  body nav a {
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  body nav h1 {
+    font-weight: bold;
+    font-size: 40px;
+    color: #ff683c;
+    letter-spacing: 0.2em;
+  }
+  
+  .crowdpulse {
+    text-align: center;
+    width: 40%;
+  }
+  
+  .logo {
+    width: 6%;
+    height: 104px;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-align: center;
+  }
+  
+  .logo img {
+    height: 90px;
+  }
+  
+  .nav-links {
+    text-align: center;
+    width: 20%;
+  }
+}
+
+
+@media screen and (max-width: 989px) {
+  body nav a {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  body nav h1 {
+    font-weight: bold;
+    font-size: 50px;
+    color: #ff683c;
+    letter-spacing: 0.2em;
+  }
+  
+  .crowdpulse {
+    text-align: center;
+    width: 40%;
+  }
+
+  .for-phone {
+    display: inherit;
+  }
+  
+  .logo {
+    width: 6%;
+    height: 104px;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-align: center;
+  }
+  
+  .logo img {
+    height: 104px;
+  }
+  
+  .nav-links {
+    text-align: center;
+    width: 20%;
+  }
+} */

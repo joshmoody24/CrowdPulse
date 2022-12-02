@@ -8,27 +8,26 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      {/* temp inline styles */}
-      <nav style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}>
-        <div style={{ display: "contents" }}>
-          
-          <div>
-            <Link to="/"><img src={ logo } style={{ height:104 }} ></img></Link>
+    <div className="App2">
+      <nav>
+        <div className="display-contents">
+          <div className="empty-width-left"></div>
+          <div className="logo-container">
+            {/* .logo-container img {} for logo styling */}
+            <Link to="/"><img src={ logo } ></img></Link>
           </div>
-          <div>
-            <Link to="/">Home</Link>
-            <Link style={{marginLeft:"1rem"}} to="/request-song">Request</Link>
+          <div className="crowdpulse-navlinks">
+            <div className="crowdpulse-container">
+              <Link to="/"><h1>CROWDPULSE</h1></Link>
+            </div>
+            <div className="navlinks-container">
+              <Link to="/">Home</Link>
+              <Link to="/request-song">Request</Link>
+              <Link to="/">Vote</Link>
+            </div>
           </div>
-          <div>
-            <Link to="/"><h1>CROWDPULSE</h1></Link>
-          </div>
+          <div className="empty-width-right"></div>
         </div>
-        <div></div>
       </nav>
       <div className="page-content">
         <Outlet></Outlet>
@@ -38,3 +37,30 @@ function App() {
 }
 
 export default App
+
+{/*
+<div className="App">
+      {/* temp inline styles */} /*
+      <nav>
+      <div style={{ display: "contents" }}>
+        <div className='logo'>
+          <Link to="/"><img src={ logo } ></img></Link>
+        </div>
+        <div className='for-phone'>
+          <div className='nav-links'>
+            <Link to="/">Home</Link>
+            <Link style={{marginLeft:"1rem"}} to="/request-song">Request</Link>
+            <Link style={{marginLeft:"1rem"}} to="/">Vote</Link>
+          </div>
+          <div className='crowdpulse'>
+            <Link to="/"><h1>CROWDPULSE</h1></Link>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </nav>
+  <div className="page-content">
+    <Outlet></Outlet>
+  </div>
+</div>}
+*/

@@ -29,6 +29,7 @@ export default function SongDetails({
                 <li>Length: {formattedLength(song.length)}</li>
                 <li>Key: {key(song.key)}</li>
                 <li>Bpm: {song.bpm}</li>
+                <li>Votes: {song.vote_count}</li>
             </ul>
             <h3>Recommendations (work in progress)</h3>
             <ul>

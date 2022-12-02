@@ -100,7 +100,7 @@ app.post('/requests', async (req, res) => {
             spotify_song_id: track.id,
             artist: track.artists.map(a => a.name).join(', '),
             RequestRequestId: songRequest.request_id,
-            album_art: song.album.images[0].url,
+            album_art: track.album.images[0].url,
             bpm: features.tempo,
             length: features.duration_ms,
             key: features.key,

@@ -42,6 +42,7 @@ export default function Recommendations(){
                         song={song}
                         onClick={(song) => setSelectedSong(song)}
                         percentFilled={song.vote_count / totalVotes}
+                        showDetails
                     />
                 ))}
             </div>

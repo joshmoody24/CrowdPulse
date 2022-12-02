@@ -1,13 +1,23 @@
-
+import { formattedLength, key } from "../utils"
 
 export default function SongCard({
     song,
     onClick,
     percentFilled = 0.5,
-    height = "5rem"
+    height = "5rem",
+    maxCharWidth = 50,
+    showDetails = false,
 }){
 
     if(!song) return <p>No song</p>
+
+    const ellipsisStyle = {
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        display: 'inline-block',
+        width: `${maxCharWidth}ch`
+    }
 
     return (
         <div className="border-white border-curved" onClick={() => onClick ? onClick(song) : console.log("clicked", song)} style={{
@@ -17,13 +27,18 @@ export default function SongCard({
             <div className="flex" style={{maxHeight: height}}>
                 <img src={song.album_art} style={{objectFit: "contain", aspectRatio: 1, width: height}} />
                 <div className="flex gap" style={{position: "relative", zIndex: 1, width: '100%'}}>
-                    <div className="flex align-items-center padded gap">
-                        <div>
-                            {song.title}
+                    <div className="flex align-items-center justify-content-center text-center gap-small padded-small bold flex-column m-auto">
+                        {/* truncates text with ellipsis */}
+                        <div style={ellipsisStyle}>
+                            {song.title} ({song.artist})
                         </div>
-                        <div>
-                            ({song.artist})
-                        </div>
+                        {showDetails && (
+                            <div style={{justifyContent: 'space-evenly', display: 'flex', width: '100%'}}>
+                                <div>Duration: {formattedLength(song.length)}</div>
+                                <div>Key: {key(song.key)}</div>
+                                <div>BPM: {song.bpm}</div>
+                            </div>
+                        )}
                     </div>
 
 

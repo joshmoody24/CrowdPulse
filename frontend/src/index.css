@@ -70,11 +70,35 @@ body nav h1 {
   padding: 1rem;
 }
 
+.gap-small {
+  gap: 0.5rem;
+}
+
+.padded-small {
+  padding: 0.5rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
 .align-items-center {
   align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .input::placeholder {
   color: white !important;
   opacity:1 ;
+}
+
+.bold {
+  font-weight: bold;
 }

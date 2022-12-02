@@ -73,3 +73,8 @@ body nav h1 {
 .align-items-center {
   align-items: center;
 }
+
+.input::placeholder {
+  color: white !important;
+  opacity:1 ;
+}

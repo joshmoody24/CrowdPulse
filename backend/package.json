@@ -17,6 +17,7 @@
     "mariadb": "^3.0.2",
     "nodemon": "^2.0.20",
     "sequelize": "^6.25.5",
+    "socket.io": "^4.5.4",
     "spotify-api.js": "^9.2.5"
   }
 }

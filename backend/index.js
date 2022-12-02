@@ -1,5 +1,8 @@
 import express from "express";
 import cors from "cors";
+import http from "http";
+import { Server } from "socket.io"
+
 
 // load environment variables
 // don't delete even though it looks unused
@@ -7,12 +10,19 @@ import env from "./env.js"
 
 // database imports
 import sequelize from "./sequelize.js";
-import models from "./models/models.js";
+import { Request, Recommendation } from "./models/models.js";
 
 
 import spotify from "./spotify.js";
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+});
 
 var corsOptions = {
   origin: "http://localhost:8080"
@@ -26,6 +36,12 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+// function that updates dj page when something changes
+async function updateDJPage() {
+    const requests = await Request.findAll({include : [Recommendation]});
+    io.emit("update", requests);
+}
+
 // get list of requests
 app.get('/requests', async (req, res) => {
     const requests = await Request.findAll()
@@ -34,7 +50,6 @@ app.get('/requests', async (req, res) => {
 
 // create request
 app.post('/requests', async (req, res) => {
-    console.log(req.body.song.id)
 
     // if song has already been requested,
     // increment vote count instead of creating new record
@@ -54,6 +69,36 @@ app.post('/requests', async (req, res) => {
         vote_count: 1,
         request_played: false,
     })
+
+    // get song metadata from spotify
+    const features = await spotify.tracks.getAudioFeatures(songRequest.spotify_song_id);
+
+    // generate recommendations
+    // multiple seed tracks? That's interesting
+    const recomendationRequest = await spotify.browse.getRecommendations({
+        seed_tracks: songRequest.spotify_song_id,
+        target_danceability: features.danceability,
+        target_energy: features.energy,
+        target_key: features.key,
+        target_mode: features.mode,
+        target_tempo: features.tempo,
+        target_valence: features.valence,
+        limit: 4,
+    })
+    // the first recommendation seems to always be a clone of the original song, skip it
+    const recommendations = recomendationRequest.tracks.slice(1)
+
+    for (let track of recommendations) {
+        await Recommendation.create({
+            title: track.name,
+            spotify_song_id: track.id,
+            artist: track.artists.map(a => a.name).join(', '),
+            RequestRequestId: songRequest.request_id,
+        });
+    }
+
+    await updateDJPage();
+
     res.json(songRequest)
 })
 
@@ -67,8 +112,20 @@ app.get('/search/:query', async (req, res) => {
     res.json(searchResults.tracks)
 })
 
+// socket interface here updates the recommendations page with necessary recommendations
+io.on('connection', (socket) => {
+    
+    socket.on('DJ Page', (socket) => {
+        updateDJPage();
+    });
+
+    socket.on('disconnect', (socket) => {
+        console.log('Disconnected from dj page');
+    });
+});
+
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
-    app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });

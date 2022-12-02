@@ -25,6 +25,22 @@ const Request = sequelize.define('Request', {
   },
   request_played: {
     type: DataTypes.BOOLEAN
+  },
+  album_art: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  bpm: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  length: {
+    type: DataTypes.DOUBLE,
+    allowNull: false
+  },
+  key: {
+    type: DataTypes.INTEGER,
+    allowNull: false
   }
 }, {
   // Other model options go here

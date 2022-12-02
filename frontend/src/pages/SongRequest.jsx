@@ -63,7 +63,8 @@ export default function SongRequest(){
                 <input type="text" onChange={(event) => handleChange(event.target.value)} />
             )}
 
-            <button onClick={() => requestSong(songId)}>Request Song</button>
+            <button onClick={() => requestSong(songId)}><b>Request Song</b></button>
+            button:style = {{backgroundColor: "#ff683c", height: "2em", width: "8em", fontSize: "20px", borderRadius: "0.5em"}}
         </div>
 
         {searchResults.length > 0 && !selectedSong && (

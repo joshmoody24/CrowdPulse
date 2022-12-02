@@ -5,7 +5,7 @@ import App from './App';
 import Home from './pages/Home';
 import SongRequest from "./pages/SongRequest"
 import "./index.css"
-import Recommendations from './pages/Recommendations'
+import Recommendations from "./pages/Recommendations"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root')

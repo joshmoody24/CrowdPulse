@@ -62,16 +62,21 @@ app.post('/requests', async (req, res) => {
     }
 
     // add new record if not already requested
+    const song = req.body.song;
+    console.log(song)
+    // get song metadata from spotify
+    const features = await spotify.tracks.getAudioFeatures(song.id);
     const songRequest = await Request.create({
-        title: req.body.song.name,
-        spotify_song_id: req.body.song.id,
-        artist: req.body.song.artists.map(a => a.name).join(', '),
+        title: song.name,
+        spotify_song_id: song.id,
+        artist: song.artists.map(a => a.name).join(', '),
         vote_count: 1,
         request_played: false,
+        album_art: song.album.images[0].url,
+        bpm: features.tempo,
+        length: features.duration_ms,
+        key: features.key,
     })
-
-    // get song metadata from spotify
-    const features = await spotify.tracks.getAudioFeatures(songRequest.spotify_song_id);
 
     // generate recommendations
     // multiple seed tracks? That's interesting
@@ -89,11 +94,16 @@ app.post('/requests', async (req, res) => {
     const recommendations = recomendationRequest.tracks.slice(1)
 
     for (let track of recommendations) {
+        const features = await spotify.tracks.getAudioFeatures(track.id);
         await Recommendation.create({
             title: track.name,
             spotify_song_id: track.id,
             artist: track.artists.map(a => a.name).join(', '),
             RequestRequestId: songRequest.request_id,
+            album_art: song.album.images[0].url,
+            bpm: features.tempo,
+            length: features.duration_ms,
+            key: features.key,
         });
     }
 

@@ -102,3 +102,11 @@ body nav h1 {
 .bold {
   font-weight: bold;
 }
+
+.hover-grow {
+  transition: 0.3s;
+}
+
+.hover-grow:hover {
+  transform: scale(1.03);
+}

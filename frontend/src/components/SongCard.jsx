@@ -20,16 +20,18 @@ export default function SongCard({
     }
 
     return (
-        <div className="border-white border-curved" onClick={() => onClick ? onClick(song) : console.log("clicked", song)} style={{
+        <div className={`border-white border-curved ${onClick ? 'hover-grow' : ''}`} onClick={() => {
+            if(onClick) onClick(song)
+        }} style={{
             backgroundColor: "#33333399",
-            cursor: "pointer"
+            cursor: onClick ? "pointer" : "default"
         }}>
             <div className="flex" style={{maxHeight: height}}>
                 <img src={song.album_art} style={{objectFit: "contain", aspectRatio: 1, width: height}} />
                 <div className="flex gap" style={{position: "relative", zIndex: 1, width: '100%'}}>
-                    <div className="flex align-items-center justify-content-center text-center gap-small padded-small bold flex-column m-auto">
+                    <div className="flex align-items-center justify-content-center text-center gap-small padded-small flex-column m-auto">
                         {/* truncates text with ellipsis */}
-                        <div style={ellipsisStyle}>
+                        <div style={ellipsisStyle} className="bold">
                             {song.title} ({song.artist})
                         </div>
                         {showDetails && (

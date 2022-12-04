@@ -1,6 +1,7 @@
 html body {
   background-color: #000000;
   box-sizing: border-box;
+  color: white;
   font-family: arial, sans-serif;
 }
 
@@ -11,3 +12,79 @@ html body {
   align-items: center;
 }
 
+.bg-orange {
+  background-color: #ff683c;
+}
+
+.border-orange {
+  border: 2px solid #ff683c;
+}
+
+.border-white {
+  border: 2px solid white;
+}
+
+.border-curved {
+  border-radius: 5px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.dj-page-column {
+  padding: 1rem;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.padded {
+  padding: 1rem;
+}
+
+.gap-small {
+  gap: 0.5rem;
+}
+
+.padded-small {
+  padding: 0.5rem;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.input::placeholder {
+  color: white !important;
+  opacity:1 ;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.hover-grow {
+  transition: 0.3s;
+}
+
+.hover-grow:hover {
+  transform: scale(1.03);
+}

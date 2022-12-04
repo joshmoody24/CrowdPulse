@@ -20,7 +20,7 @@ function App() {
           <div className="navlinks-container">
             <Link to="/">Home</Link>
             <Link to="/request-song">Request</Link>
-            <Link to="/">Vote</Link>
+            <Link to="/vote">Vote</Link>
           </div>
         </div>
       </div>

@@ -8,27 +8,22 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div className="App2">
-      <nav>
-        <div className="display-contents">
-          <div className="empty-width-left"></div>
-          <div className="logo-container">
-            {/* .logo-container img {} for logo styling */}
-            <Link to="/"><img src={ logo } ></img></Link>
-          </div>
-          <div className="crowdpulse-navlinks">
-            <div className="crowdpulse-container">
-              <Link to="/"><h1>CROWDPULSE</h1></Link>
-            </div>
-            <div className="navlinks-container">
-              <Link to="/">Home</Link>
-              <Link to="/request-song">Request</Link>
-              <Link to="/">Vote</Link>
-            </div>
-          </div>
-          <div className="empty-width-right"></div>
+    <div className="App">
+      <div className="navbar">
+        <div className="logo-container">
+          <Link to="/"><img src={ logo } ></img></Link>
         </div>
-      </nav>
+        <div className="crowdpule-navlinks">
+          <div className='crowdpulse-container'>
+            <Link to="/" className="crowdpulse">CROWDPULSE</Link>
+          </div>
+          <div className="navlinks-container">
+            <Link to="/">Home</Link>
+            <Link to="/request-song">Request</Link>
+            <Link to="/">Vote</Link>
+          </div>
+        </div>
+      </div>
       <div className="page-content">
         <Outlet></Outlet>
       </div>
@@ -63,4 +58,31 @@ export default App
     <Outlet></Outlet>
   </div>
 </div>}
+
+
+<div className="App2">
+      <nav>
+        <div className="display-contents">
+          <div className="empty-width-left"></div>
+          <div className="logo-container">
+            {/* .logo-container img {} for logo styling */ /*}
+            <Link to="/"><img src={ logo } ></img></Link>
+          </div>
+          <div className="crowdpulse-navlinks">
+            <div className="crowdpulse-container">
+              <Link to="/"><h1>CROWDPULSE</h1></Link>
+            </div>
+            <div className="navlinks-container">
+              <Link to="/">Home</Link>
+              <Link to="/request-song">Request</Link>
+              <Link to="/">Vote</Link>
+            </div>
+          </div>
+          <div className="empty-width-right"></div>
+        </div>
+      </nav>
+      <div className="page-content">
+        <Outlet></Outlet>
+      </div>
+    </div>
 */

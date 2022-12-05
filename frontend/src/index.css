@@ -97,24 +97,45 @@ html body {
   border: 2px solid #ff683c;
   display: flex;
   justify-content: flex-start;
-  margin: 8px 0px;
+  /* margin: 8px 0px; */
   width: 575px;
+  margin: 8px 0px;
+  width: 94vw;
+  max-width: 675px;
 }
 
-@media screen and (max-width: 599px) {
+.songname {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.artistname {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.votecount {
+  font-size: 2rem;
+}
+/* @media screen and (max-width: 599px) {
   .songname {
     font-size: 4vw;
+    font-weight: bold;
   }
 
   .artistname {
-    font-size: 4vw;
+    font-size: 3.5vw;
+    font-style: italic;
   }
 
   .voting-card {
     margin: 8px 0px;
     width: 94vw;
   }
-}
+  .votecount {
+    font-size: 6vw;
+  }
+} */
 
 /* Styling for Navbar -- phone and laptop screen sizes */
 .navbar {

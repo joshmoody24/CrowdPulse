@@ -1,3 +1,5 @@
+import UpvoteDownvote from "./UpvoteDownvote"
+
 export default function VoteOption({
     song,
     onClick,
@@ -20,7 +22,7 @@ export default function VoteOption({
                 <div className="songname">{song.title}</div>
                 <div className="artistname">{song.artist}</div>
             </div>
-            <div style={{visibility: "hidden"}}>8</div>
+            <div className="votecount songname" style={{marginLeft:"auto"}}>{song.vote_count}</div>
         </div>
     )
 }

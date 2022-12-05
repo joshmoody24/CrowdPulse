@@ -6,10 +6,11 @@ html body {
 }
 
 .page-content {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  margin: 8px 8px;
 }
 
 .bg-orange {
@@ -89,6 +90,32 @@ html body {
   transform: scale(1.03);
 }
 
+/* Styling for VotingCard Component */
+.voting-card {
+  align-content: center;
+  align-items: center;
+  border: 2px solid #ff683c;
+  display: flex;
+  justify-content: flex-start;
+  margin: 8px 0px;
+  width: 575px;
+}
+
+@media screen and (max-width: 599px) {
+  .songname {
+    font-size: 4vw;
+  }
+
+  .artistname {
+    font-size: 4vw;
+  }
+
+  .voting-card {
+    margin: 8px 0px;
+    width: 94vw;
+  }
+}
+
 /* Styling for Navbar -- phone and laptop screen sizes */
 .navbar {
   align-items: center;
@@ -126,7 +153,7 @@ html body {
     justify-content: center;
   }
     
-    .crowdpulse {
+    .crowdpulse, .crowdpulse:hover {
       color: #ff683c;
       font-size: 50px;
       font-weight: bold;
@@ -184,7 +211,7 @@ html body {
       margin-bottom: 4px;
     }
       
-      .crowdpulse {
+      .crowdpulse, .crowdpulse:hover {
         color: #ff683c;
         font-size: 22px;
         font-weight: bold;

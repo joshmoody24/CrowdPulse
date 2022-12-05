@@ -6,15 +6,15 @@ export default function SongList({
 }){
 
     return (
-        <div style={{
-            position: "absolute",
-            display: "flex",
-            flexDirection: "column"
-        }}>
+        <div className="container mt-2">
             {songs.map(s => (
-                <button key={s.id} onClick={() => onSongSelect(s)} style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-                    <img style={{height: "5rem", width: "5rem"}} src={s.album.images[0].url} />
-                    {s.name}
+                <button key={s.id} onClick={() => onSongSelect(s)} className="row w-100 rowbutton bg-white rounded" style={{marginLeft:0}}>
+                    <div className="col-6" style={{textAlign: "left", alignSelf: "center"}}>
+                        {s.name}
+                    </div>
+                    <div className="col-6 text-right my-1">
+                        <img src={s.album.images[0].url} style={{height: "5rem", width: "5rem"}} className="align-self-end rounded"/>
+                    </div>
                 </button>
             ))}
         </div>

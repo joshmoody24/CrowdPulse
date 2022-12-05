@@ -140,3 +140,10 @@ const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
+
+app.post('/upvote/:songid', async (req, res)=> {
+    let songRequest = await Request.findOne({where:{request_id:req.params.songid}});
+    songRequest.vote_count++;
+    await songRequest.save();
+    res.json(songRequest);
+});

@@ -17,6 +17,10 @@ export default function Vote() {
         }
         loadRequests();
     }, []);
+    async function upvote_req(songid){
+        const data = await fetch(`/api/upvote/${songid}`, {method:"POST"});
+
+    };
 
     const totalVotes = songs.reduce((sum, song) => sum + song.vote_count, 0) ?? 1;
     
@@ -27,7 +31,10 @@ export default function Vote() {
                     <VotingCard
                         key={song.request_id}
                         song={song}
-                        // onClick
+                        onClick = {()=>{
+                            upvote_req(song.request_id)
+                        }}
+                        
 
                     />
                 ))}

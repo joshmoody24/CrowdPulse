@@ -1,6 +1,6 @@
 export default function VoteOption({
     song,
-    // onClick,
+    onClick,
     maxCharWidth = 50,
 }){
     if(!song) return <p>No Song</p>
@@ -14,7 +14,7 @@ export default function VoteOption({
     }
 
     return (
-        <div className="voting-card">
+        <div className="voting-card" onClick={onClick}>
             <img src={song.album_art} style={{width: "15%", margin: 8}} />
             <div style={{padding: "0, 8"}}>
                 <div className="songname">{song.title}</div>

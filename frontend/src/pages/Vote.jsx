@@ -8,7 +8,7 @@ export default function Vote() {
 
     useEffect(() => {
         async function loadRequests() {
-            const data = await fetch('http://localhost:8080/requests');
+            const data = await fetch('/api/requests');
             const songs = await data.json()
             console.log("start")
             console.log(songs)

@@ -25,7 +25,7 @@ const io = new Server(server, {
 });
 
 var corsOptions = {
-  origin: "http://localhost:8080"
+  origin: "*"
 };
 
 app.use(cors(corsOptions));

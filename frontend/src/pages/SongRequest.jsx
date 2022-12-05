@@ -56,14 +56,18 @@ export default function SongRequest(){
             <div className="row">
                 <div className="col-7 text-center">
                     {selectedSong && (
-                    <div>
-                        <button onClick={clear}>X</button>&nbsp;
-                        Selected Song: {selectedSong.name}&nbsp;
+                    <div className="row">
+                        <div className="col-3">
+                            <button onClick={clear} className="rounded-3 h-100 w-100" style = {{backgroundColor: "#ff683c"}}>X</button>&nbsp;
+                        </div>
+                        <div className="col">
+                            <div className="mt-2">Selected Song: {selectedSong.name}</div>
+                        </div>
                     </div>
                     )}
 
                     {!selectedSong && (
-                        <input type="text" placeholder="Search a Song to Request" className="rounded-3 p-3 w-50 w-100" style = {{maxWidth: "700px"}} onChange={(event) => handleChange(event.target.value)} />
+                        <input type="text" placeholder="Request a Song" className="rounded-3 p-3 w-50 w-100" style = {{maxWidth: "700px"}} onChange={(event) => handleChange(event.target.value)} />
                      )}
                 </div>
                 <div className="col-5 text-center">

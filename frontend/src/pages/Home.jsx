@@ -16,7 +16,7 @@ export default function Home(){
             </div>
             <div className="row mt-5">
                 <div className="col text-center">
-                    <img src={Vote} alt="vote_icon" />
+                    <Link to="/vote"><img src={Vote} alt="vote_icon" /></Link>
                     <p className="mt-2"><b>Cast Your Vote for the Next Song</b></p>
                 </div>
                 <div className="col text-center">

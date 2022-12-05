@@ -53,8 +53,8 @@ export default function SongRequest(){
                 <h1><b>Request a Song for the DJ to Play!</b></h1>
                 <h3>Powered by Spotify</h3>
             </div>
-            <div className="row w-100">
-                <div className="col w-75">
+            <div className="row justify-content-center">
+                <div className="col-5">
                     {selectedSong && (
                     <div>
                         <button onClick={clear}>X</button>&nbsp;
@@ -63,10 +63,10 @@ export default function SongRequest(){
                     )}
 
                     {!selectedSong && (
-                        <input type="text" placeholder="Search a Song to Request" className="rounded-3 p-3 w-100" onChange={(event) => handleChange(event.target.value)} />
+                        <input type="text" placeholder="Search a Song to Request" className="rounded-3 p-3 w-50 bg-secondary text-white w-100" onChange={(event) => handleChange(event.target.value)} />
                      )}
                 </div>
-                <div className="col w-25">
+                <div className="col-3">
                     <button className="rounded-3 text-white p-3 w-100" style = {{backgroundColor: "#ff683c"}} onClick={() => requestSong(songId)}><b>Submit Request</b></button>
                 </div>
             </div>

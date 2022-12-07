@@ -22,7 +22,7 @@ export default function VoteOption({
                 <div className="songname">{song.title}</div>
                 <div className="artistname">{song.artist}</div>
             </div>
-            <div className="votecount songname" style={{marginLeft:"auto"}}>{song.vote_count}</div>
+            <div className="votecount songname" style={{marginRight: "16px", marginLeft:"auto"}}>{song.vote_count}</div>
         </div>
     )
 }

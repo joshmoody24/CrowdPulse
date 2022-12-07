@@ -146,6 +146,7 @@ app.post('/upvote/:songid', async (req, res)=> {
     songRequest.vote_count++;
     await songRequest.save();
     res.json(songRequest);
+    updateDJPage();
 });
 
 app.post('/downvote/:songid', async (req, res)=> {
@@ -154,4 +155,5 @@ app.post('/downvote/:songid', async (req, res)=> {
     if(songRequest.vote_count < 0) songRequest.vote_count = 0;
     await songRequest.save();
     res.json(songRequest);
+    updateDJPage();
 });

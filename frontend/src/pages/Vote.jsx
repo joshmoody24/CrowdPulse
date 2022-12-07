@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
+import io from 'socket.io-client'
 import TotalVotes from "../components/TotalVotes";
 import VotingCard from "../components/VotingCard";
+
+const socket = io("localhost:8080")
 
 export default function Vote() {
     const [songs, setSongs] = useState([]);
@@ -17,6 +20,19 @@ export default function Vote() {
         }
         loadRequests();
     }, []);
+
+    useEffect(() => {
+        socket.on('update', (data) => {
+            console.log(data);
+            setSongs(data);
+        });
+
+        return () => {
+            socket.off('connect');
+        }
+    }, []);
+
+
     async function upvote_req(songid){
         const data = await fetch(`/api/upvote/${songid}`, {method:"POST"});
 

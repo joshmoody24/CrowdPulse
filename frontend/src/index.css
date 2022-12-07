@@ -110,17 +110,17 @@ html body {
 }
 
 .songname {
-  font-size: 2rem;
+  font-size: 5vw;
   font-weight: bold;
 }
 
 .artistname {
-  font-size: 1.5rem;
+  font-size: 4vw;
   font-style: italic;
 }
 
 .votecount {
-  font-size: 2rem;
+  font-size: 5vw;
 }
 /* @media screen and (max-width: 599px) {
   .songname {

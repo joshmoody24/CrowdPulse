@@ -40,7 +40,7 @@ export default function VoteOption({
             </div>
             <div style={{marginRight:16, marginLeft:"auto"}} className="text-center">
                 <div className="votecount songname" style={{marginLeft:"auto"}}>{song.vote_count}</div>
-                <div>Votes</div>
+                <div style={{fontSize: "4vw"}}>Votes</div>
             </div>
         </div>
     )

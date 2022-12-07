@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import SongCard from "../components/SongCard";
 import SongDetails from "../components/SongDetails";
 
-const socket = io("localhost:8080");
+const socket = io(import.meta.env.DEV ? "localhost:8080" : "ws://www.stereolabs.lol")
 
 export default function Recommendations(){
 

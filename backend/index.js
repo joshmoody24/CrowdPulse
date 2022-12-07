@@ -45,6 +45,7 @@ async function updateDJPage() {
 // get list of requests
 app.get('/requests', async (req, res) => {
     const requests = await Request.findAll()
+    console.log(requests)
     res.json(requests)
 })
 
@@ -138,4 +139,21 @@ io.on('connection', (socket) => {
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
+});
+
+app.post('/upvote/:songid', async (req, res)=> {
+    let songRequest = await Request.findOne({where:{request_id:req.params.songid}});
+    songRequest.vote_count++;
+    await songRequest.save();
+    res.json(songRequest);
+    updateDJPage();
+});
+
+app.post('/downvote/:songid', async (req, res)=> {
+    let songRequest = await Request.findOne({where:{request_id:req.params.songid}});
+    songRequest.vote_count--;
+    if(songRequest.vote_count < 0) songRequest.vote_count = 0;
+    await songRequest.save();
+    res.json(songRequest);
+    updateDJPage();
 });

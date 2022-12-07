@@ -206,7 +206,7 @@ html body {
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    height: 70px;
+    height: 25vw;
     justify-content: center;
     width: 100%;
   }
@@ -215,12 +215,12 @@ html body {
     align-content: center;
     display: flex;
     flex-direction: column;
-    height: inherit;
+    height: 25vw;
     justify-content: center;
   }
   
     .logo-container img {
-      height: 70px;
+      height: 25vw;
     }
   
   .crowdpulse-navlinks {
@@ -239,7 +239,7 @@ html body {
       
       .crowdpulse, .crowdpulse:hover {
         color: #ff683c;
-        font-size: 22px;
+        font-size: 8vw;
         font-weight: bold;
         letter-spacing: 0.2em;
         text-decoration: none;
@@ -254,7 +254,7 @@ html body {
   
       .navlinks-container a {
         color: white;
-        font-size: 16px;
+        font-size: 6vw;
         text-decoration: none;
       }
 }

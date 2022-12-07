@@ -3,7 +3,7 @@ import io from 'socket.io-client'
 import TotalVotes from "../components/TotalVotes";
 import VotingCard from "../components/VotingCard";
 
-const socket = io("/api")
+const socket = io(import.meta.env.DEV ? "localhost:8080" : "ws://www.stereolabs.lol")
 
 export default function Vote() {
     const [songs, setSongs] = useState([]);
@@ -57,8 +57,6 @@ export default function Vote() {
                         onDownvote = {()=>{
                             downvote_req(song.request_id)
                         }}
-                        
-
                     />
                 ))}
             </div>

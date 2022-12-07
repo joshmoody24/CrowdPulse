@@ -5,12 +5,12 @@ export default function VoteOption({
     song,
     onUpvote,
     onDownvote,
-    maxCharWidth = 50,
+    maxCharWidth = 27,
 }){    
     const votecheck = `voted-${song.request_id}`;
     const [checked, setChecked] = useState(localStorage.getItem(votecheck));
     if(!song) return <p>No Song</p>
-    const ellipsisStyle = {
+    const ellipsesStyle = {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
@@ -32,7 +32,7 @@ export default function VoteOption({
     }
 
     return (
-        <div className={localStorage.getItem(votecheck) ? "voting-card bg-orange" :"voting-card" } onClick={handleClick} style={{cursor: "pointer"}}>
+        <div className={checked ? "voting-card bg-transparentOrange" :"voting-card" } onClick={handleClick} style={{cursor: "pointer"}}>
             <img src={song.album_art} style={{width: "15%", margin: 8}} />
             <div style={{padding: "0, 8"}}>
                 <div className="songname">{song.title}</div>

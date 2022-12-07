@@ -17,6 +17,11 @@ html body {
   background-color: #ff683c;
 }
 
+.bg-transparentOrange{
+  background-color: #ff693c9b;
+  
+}
+
 .border-orange {
   border: 2px solid #ff683c;
 }

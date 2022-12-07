@@ -110,37 +110,42 @@ html body {
 }
 
 .songname {
-  font-size: 5vw;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .artistname {
-  font-size: 4vw;
+  font-size: 1.4rem;
   font-style: italic;
 }
 
 .votecount {
-  font-size: 5vw;
+  font-size: 2rem;
 }
-/* @media screen and (max-width: 599px) {
+
+.votes {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 599px) {
   .songname {
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: bold;
   }
-
+  
   .artistname {
-    font-size: 3.5vw;
+    font-size: 4vw;
     font-style: italic;
   }
-
-  .voting-card {
-    margin: 8px 0px;
-    width: 94vw;
-  }
+  
   .votecount {
-    font-size: 6vw;
+    font-size: 5vw;
   }
-} */
+
+  .votes {
+    font-size: 4vw;
+  }
+}
 
 /* Styling for Navbar -- phone and laptop screen sizes */
 .navbar {

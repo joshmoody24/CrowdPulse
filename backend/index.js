@@ -147,3 +147,11 @@ app.post('/upvote/:songid', async (req, res)=> {
     await songRequest.save();
     res.json(songRequest);
 });
+
+app.post('/downvote/:songid', async (req, res)=> {
+    let songRequest = await Request.findOne({where:{request_id:req.params.songid}});
+    songRequest.vote_count--;
+    if(songRequest.vote_count < 0) songRequest.vote_count = 0;
+    await songRequest.save();
+    res.json(songRequest);
+});
